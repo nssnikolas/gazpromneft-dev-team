@@ -1,11 +1,30 @@
 # Матрица компетенций разработчика робототехники
 
 > **Версия 3.0 | 14 июля 2025**  
-> Полное руководство для оценки кандидатов на проект **UNITREE G1**.  
+> Полное руководство для оценки кандидатов на проект по антропоморфной робототехнике.
 > Для **каждой** компетенции указаны три уровня владения (Junior / Middle / Senior) и **Red Flags** — признаки, что кандидат не «тянет» задачу.
 ---
 
 ## 1 · Hard skills — профессиональные компетенции
+
+
+### 1.X ROS 2 Middleware & Tooling
+| Под‑компетенция | Junior | Middle | Senior | **Red Flags** |
+|-----------------|--------|--------|--------|--------------|
+| Core API (nodes, topics, services, actions), DDS QoS | Пишет простые однонодовые демо; знает `ros2 run`, `ros2 topic echo` | Создаёт многонодовую архитектуру, настраивает QoS, использует composition containers | Оптимизирует QoS для realtime, пишет custom DDS plugins, консультирует команду | Путает pub/sub с service, не знает разницы Reliable/BestEffort |
+| Build & Packaging (CMake, colcon, rosdep) | Собирает примеры `colcon build` | Создаёт multi‑package workspaces, пишет `rosdep` rules, использует `ament_cmake` | Автоматизирует кешированные сборки, интегрирует Bazel в CICD | Не понимает разницы `--packages-up-to`, не умеет решать зависимости |
+| Launch & Lifecycle | Запускает launch.py для одного робота | Пишет комплексные графы launch, управляет параметрами, lifecycle nodes | Формализует BT‑driven launches, рулит 100+ узлов во флоте | Копирует launch «на глаз», не знает lifecycle states |
+| Debug & Introspection | Пользуется `rqt`, `ros2 topic hz` | Использует `ros2 trace`, tracetools, RViz plugins | Строит custom метрики в Grafana/Prometheus, автоматизирует tracing | «printf‑debug», игнорирует `ros2 doctor`, не умеет RViz 2 |
+| Security & DDS Security | Пробовал SROS2 demo, знает про x.509 | Настраивает Access Control, шифрует трафик, FastDDS security | Пишет policy plugins, проводит pentest, threat modeling | Считает «у нас внутренняя сеть — зачем шифрование» |
+
+
+### 1.Y Programming Languages & Coding Standards
+| Тема | Junior | Middle | Senior | **Red Flags** |
+|------|--------|--------|--------|--------------|
+| **C++ 14/17/20** | Пишет классы, STL контейнеры, smart ptr | Использует RAII, move‑семантику, templates, CMake targets | Проектирует ABI‑стабильные библы, оптимизирует multithread, SIMD | Использует `new`/`delete`, C‑style casts, глобальные variables |
+| **Python 3.x** | Пишет скрипты, virtualenv, f‑strings | Asyncio, type‑hints, packaging (poetry/pyproject), logging | Пишет Cython/pybind11, профилирует, создает CLI/GUI, Numba | Скрипты «в проде» без venv, `import *`, print‑debug |
+| **Code Quality & Testing** | Форматирует clang‑format/black, pytest basics | Юнит‑тесты (gtest/pytest), coverage, clang‑tidy, pre‑commit | Вводит TDD, стат‑анализ (Coverity), code‑owners, performance tests | Нет тестов, игнорирует warnings, отсутствие CI checks |
+
 
 ### 1.1 Simulation & Digital Twin (NVIDIA Isaac Sim / Omniverse)
 | Под‑компетенция | Junior | Middle | Senior | Red Flags |
